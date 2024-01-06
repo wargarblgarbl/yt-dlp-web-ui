@@ -15,7 +15,7 @@ import (
 func FreeSpace() (uint64, error) {
 	var stat unix.Statfs_t
 	unix.Statfs(config.Instance().DownloadPath, &stat)
-	return (stat.Bavail * uint64(stat.Bsize)), nil
+	return (uint64(stat.Bavail) * uint64(stat.Bsize)), nil
 }
 
 // Build a directory tree started from the specified path using DFS.
